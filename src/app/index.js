@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { UserContextProvider } from './UserContext'
 import './App.css'
 import Card from './Card'
 import Cards from './Cards'
@@ -7,25 +8,19 @@ import Header from './Header'
 import Profile from './Profile'
 
 function App() {
-  const [user, setUser] = useState({ userName: '...', age: '...' })
-
-  const save = ({ userName, age }) => {
-    setUser({ userName, age })
-  }
-
   return (
-    <>
+    <UserContextProvider>
       <Header />
       <Cards>
         <Card>
-          <Form save={save} />
+          <Form />
         </Card>
 
         <Card>
-          <Profile user={user} />
+          <Profile />
         </Card>
       </Cards>
-    </>
+    </UserContextProvider>
   )
 }
 

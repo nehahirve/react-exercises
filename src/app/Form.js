@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from './UserContext'
 import VerticalSpace from './VerticalSpace'
 
 export default function Form(props) {
-  const [userName, setUserName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [age, setAge] = useState('')
+  const { setUser } = useContext(UserContext)
 
   const save = e => {
     e.preventDefault()
-    props.save({ userName, age })
+    setUser({ firstName, lastName, age })
   }
 
   return (
@@ -15,13 +18,25 @@ export default function Form(props) {
       <h1>Fill in with some data</h1>
       <form onSubmit={save}>
         <div className='form-item'>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='firstName'>First Name</label>
           <VerticalSpace height={5} />
           <input
             id='name'
             type='text'
             placeholder='Type in your name'
-            onChange={e => setUserName(e.target.value)}
+            onChange={e => setFirstName(e.target.value)}
+          />
+        </div>
+        <VerticalSpace height={5} />
+
+        <div className='form-item'>
+          <label htmlFor='lastName'>Last Name</label>
+          <VerticalSpace height={5} />
+          <input
+            id='name'
+            type='text'
+            placeholder='Type in your name'
+            onChange={e => setLastName(e.target.value)}
           />
         </div>
 
