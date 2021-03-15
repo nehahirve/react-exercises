@@ -1,26 +1,26 @@
 import React from 'react'
 import VerticalSpace from './VerticalSpace'
 
-export default function Profile () {
+export default function Profile(props) {
   return (
-    <div className="profile">
-      <div className="profile-picture">
-        <img src="empty-user-profile.png" alt="User profile" />
+    <div className='profile'>
+      <div className='profile-picture'>
+        <img src='empty-user-profile.png' alt='User profile' />
       </div>
 
       <VerticalSpace height={15} />
 
-      <div className="profile-data">
-        <div className="profile-data-item">
+      <div className='profile-data'>
+        <div className='profile-data-item'>
           <h3>Name:</h3>
-          <p>...</p>
+          <p>{props.user.userName}</p>
         </div>
 
         <VerticalSpace height={15} />
 
-        <div className="profile-data-item">
+        <div className='profile-data-item'>
           <h3>Age:</h3>
-          <p>...</p>
+          <p>{props.user.age}</p>
         </div>
       </div>
     </div>
